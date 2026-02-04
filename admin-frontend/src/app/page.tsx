@@ -50,7 +50,8 @@ export default function DashboardPage() {
   // 네비게이션 메뉴
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  // 알림음 임시 비활성화
+  // const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const storeId = admin?.store_id || 1;
 
