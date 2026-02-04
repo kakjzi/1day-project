@@ -18,8 +18,8 @@ export default function OrdersPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 인증 체크 - 임시 비활성화
-    // if (!isAuthenticated) { router.push('/login'); return; }
+    // 인증 체크
+    if (!isAuthenticated) { router.push('/login'); return; }
     getOrders().then(setOrders).catch(err => {
       console.error('주문 로드 실패:', err);
     }).finally(() => setLoading(false));

@@ -25,9 +25,9 @@ export default function MenuPage() {
   const [selectedMenuId, setSelectedMenuId] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // 인증 체크 - 임시 비활성화
+  // 인증 체크
   useEffect(() => {
-    // if (!authLoading && !isAuthenticated) router.push('/login');
+    if (!authLoading && !isAuthenticated) router.push('/login');
   }, [authLoading, isAuthenticated, router]);
 
   useEffect(() => {

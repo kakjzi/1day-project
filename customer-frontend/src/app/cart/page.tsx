@@ -20,8 +20,8 @@ export default function CartPage() {
   const [error, setError] = useState('');
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
 
-  // 인증 체크 - 임시 비활성화
-  // if (!isAuthenticated) { router.push('/login'); return null; }
+  // 인증 체크
+  if (!isAuthenticated) { router.push('/login'); return null; }
 
   const handleOrder = async () => {
     setError('');
