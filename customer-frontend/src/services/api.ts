@@ -19,9 +19,9 @@ const request = async <T>(path: string, options?: RequestInit): Promise<T> => {
 
 // Auth
 export const login = (tableNumber: number, pin: string) =>
-  request<{ access_token: string }>('/api/tables/login', {
+  request<{ token: string; table_id: number }>('/api/tables/login', {
     method: 'POST',
-    body: JSON.stringify({ table_number: tableNumber, pin }),
+    body: JSON.stringify({ store_id: 1, table_number: tableNumber, pin }),
   });
 
 // Menu

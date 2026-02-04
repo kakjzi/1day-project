@@ -48,9 +48,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } else {
       // Real API call
       const res = await apiLogin(table, pin);
-      setToken(res.access_token);
+      setToken(res.token);
       setTableNumber(table);
-      localStorage.setItem('token', res.access_token);
+      localStorage.setItem('token', res.token);
       localStorage.setItem('tableNumber', String(table));
       localStorage.setItem('pin', pin);
     }
