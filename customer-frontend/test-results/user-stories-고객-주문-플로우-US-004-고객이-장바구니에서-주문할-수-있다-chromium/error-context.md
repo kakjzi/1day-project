@@ -1,0 +1,70 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - heading [level=6] [ref=e5]: 테이블
+        - button [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - button [ref=e9] [cursor=pointer]:
+          - img [ref=e10]
+      - tablist [ref=e15]:
+        - tab [selected] [ref=e16] [cursor=pointer]
+        - tab [ref=e17] [cursor=pointer]
+        - tab [ref=e18] [cursor=pointer]
+    - generic [ref=e21]:
+      - generic [ref=e22] [cursor=pointer]:
+        - img [ref=e24]
+        - generic [ref=e25]:
+          - heading [level=6] [ref=e26]: 김치찌개
+          - paragraph [ref=e27]: 얼큰한 김치찌개
+          - heading [level=6] [ref=e28]: 9,000원
+      - generic [ref=e29] [cursor=pointer]:
+        - img [ref=e31]
+        - generic [ref=e32]:
+          - heading [level=6] [ref=e33]: 된장찌개
+          - paragraph [ref=e34]: 구수한 된장찌개
+          - heading [level=6] [ref=e35]: 8,000원
+      - generic [ref=e36] [cursor=pointer]:
+        - img [ref=e38]
+        - generic [ref=e39]:
+          - heading [level=6] [ref=e40]: 제육볶음
+          - paragraph [ref=e41]: 매콤한 제육볶음
+          - heading [level=6] [ref=e42]: 11,000원
+      - generic [ref=e43] [cursor=pointer]:
+        - img [ref=e45]
+        - generic [ref=e46]:
+          - heading [level=6] [ref=e47]: 불고기
+          - paragraph [ref=e48]: 달콤한 불고기
+          - heading [level=6] [ref=e49]: 13,000원
+      - generic [ref=e50] [cursor=pointer]:
+        - img [ref=e52]
+        - generic [ref=e53]:
+          - heading [level=6] [ref=e54]: 비빔밥
+          - paragraph [ref=e55]: 건강한 비빔밥
+          - heading [level=6] [ref=e56]: 9,000원
+  - alert [ref=e57]
+  - dialog "김치찌개" [ref=e60]:
+    - heading "김치찌개" [level=2] [ref=e61]
+    - generic [ref=e62]:
+      - paragraph [ref=e63]: 얼큰한 김치찌개
+      - heading "9,000원" [level=6] [ref=e64]
+      - generic [ref=e65]:
+        - heading "맵기 선택 *필수" [level=6] [ref=e66]
+        - group [ref=e67]:
+          - button "순한맛" [ref=e68] [cursor=pointer]
+          - button "보통" [ref=e69] [cursor=pointer]
+          - button "매운맛" [ref=e70] [cursor=pointer]
+          - button "아주 매운맛 +500원" [ref=e71] [cursor=pointer]
+      - generic [ref=e72]:
+        - button [disabled]:
+          - img
+        - heading "1" [level=6] [ref=e73]
+        - button [ref=e74] [cursor=pointer]:
+          - img [ref=e75]
+    - generic [ref=e77]:
+      - button "취소" [ref=e78] [cursor=pointer]
+      - button "9,000원 담기" [disabled]
+```

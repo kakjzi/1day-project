@@ -1,0 +1,88 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - alert [ref=e2]
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - button [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - heading "메뉴 관리" [level=6] [ref=e9]
+        - button "카테고리" [ref=e10] [cursor=pointer]:
+          - img [ref=e12]
+          - text: 카테고리
+        - button "메뉴 추가" [ref=e14] [cursor=pointer]:
+          - img [ref=e16]
+          - text: 메뉴 추가
+    - tablist [ref=e22]:
+      - tab "메인 메뉴" [selected] [ref=e23] [cursor=pointer]
+      - tab "사이드" [ref=e24] [cursor=pointer]
+      - tab "음료" [ref=e25] [cursor=pointer]
+    - generic [ref=e28]:
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - generic [ref=e33]: 김치찌개
+            - generic [ref=e35]: 품절
+          - heading "9,000원" [level=6] [ref=e36]
+          - paragraph [ref=e37]: 얼큰한 김치찌개
+        - generic [ref=e38]:
+          - button "옵션" [ref=e39] [cursor=pointer]
+          - button [ref=e40] [cursor=pointer]:
+            - img [ref=e41]
+          - button [ref=e43] [cursor=pointer]:
+            - img [ref=e44]
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e50]: 된장찌개
+            - generic [ref=e52]: 품절
+          - heading "8,000원" [level=6] [ref=e53]
+          - paragraph [ref=e54]: 구수한 된장찌개
+        - generic [ref=e55]:
+          - button "옵션" [ref=e56] [cursor=pointer]
+          - button [ref=e57] [cursor=pointer]:
+            - img [ref=e58]
+          - button [ref=e60] [cursor=pointer]:
+            - img [ref=e61]
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - generic [ref=e66]:
+            - generic [ref=e67]: 제육볶음
+            - generic [ref=e69]: 품절
+          - heading "11,000원" [level=6] [ref=e70]
+          - paragraph [ref=e71]: 매콤한 제육볶음
+        - generic [ref=e72]:
+          - button "옵션" [ref=e73] [cursor=pointer]
+          - button [ref=e74] [cursor=pointer]:
+            - img [ref=e75]
+          - button [ref=e77] [cursor=pointer]:
+            - img [ref=e78]
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e83]:
+            - generic [ref=e84]: 불고기
+            - generic [ref=e86]: 품절
+          - heading "13,000원" [level=6] [ref=e87]
+          - paragraph [ref=e88]: 달콤한 불고기
+        - generic [ref=e89]:
+          - button "옵션" [ref=e90] [cursor=pointer]
+          - button [ref=e91] [cursor=pointer]:
+            - img [ref=e92]
+          - button [ref=e94] [cursor=pointer]:
+            - img [ref=e95]
+      - generic [ref=e98]:
+        - generic [ref=e99]:
+          - generic [ref=e100]:
+            - generic [ref=e101]: 비빔밥
+            - generic [ref=e103]: 품절
+          - heading "9,000원" [level=6] [ref=e104]
+          - paragraph [ref=e105]: 건강한 비빔밥
+        - generic [ref=e106]:
+          - button "옵션" [ref=e107] [cursor=pointer]
+          - button [ref=e108] [cursor=pointer]:
+            - img [ref=e109]
+          - button [ref=e111] [cursor=pointer]:
+            - img [ref=e112]
+```
