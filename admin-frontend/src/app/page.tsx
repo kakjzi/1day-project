@@ -78,16 +78,16 @@ export default function DashboardPage() {
     }
   }, [storeId]);
 
-  // 인증 체크
+  // 인증 체크 - 임시 비활성화
   useEffect(() => {
-    if (!authLoading && !isAuthenticated) {
-      router.push('/login');
-    }
+    // if (!authLoading && !isAuthenticated) {
+    //   router.push('/login');
+    // }
   }, [authLoading, isAuthenticated, router]);
 
   // 초기 데이터 로드 및 SSE 연결
   useEffect(() => {
-    if (!isAuthenticated || !admin) return;
+    // if (!isAuthenticated || !admin) return;
 
     loadData();
 
@@ -152,9 +152,10 @@ export default function DashboardPage() {
     return <LoadingSpinner fullScreen message="로딩 중..." />;
   }
 
-  if (!isAuthenticated) {
-    return null;
-  }
+  // 임시로 인증 체크 비활성화
+  // if (!isAuthenticated) {
+  //   return null;
+  // }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
