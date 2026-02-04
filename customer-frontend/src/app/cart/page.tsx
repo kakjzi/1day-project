@@ -27,6 +27,23 @@ export default function CartPage() {
     setError('');
     setLoading(true);
     try {
+      // Sync cart to backend before ordering
+      const { addToCart: syncToBackend, clearServerCart } = await import('@/services/api');
+      await clearServerCart(); // Clear any existing cart
+      for (const item of items) {
+        // Transform to backend CartCreate format
+        const backendItem = {
+          menu_id: item.menuId,
+          quantity: item.quantity,
+          options: item.selectedOptions.map(opt => ({
+            option_id: opt.optionId,
+            name: opt.optionName,
+            price: opt.price
+          }))
+        };
+        await syncToBackend(backendItem as any);
+      }
+      
       const order = await createOrder();
       setOrderNumber(order.display_number);
       clearCart();

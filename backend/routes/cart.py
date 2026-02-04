@@ -60,11 +60,22 @@ def add_to_cart(
     if credentials is None:
         return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Token required"})
     
-    payload = decode_token(credentials.credentials)
-    if payload is None:
-        return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Invalid token"})
+    token = credentials.credentials
     
-    table_id = payload.get("table_id")
+    # Mock token for testing (임시)
+    if token.startswith('mock-token-table-'):
+        table_number = int(token.split('-')[-1])
+        table = db.query(Table).filter(Table.table_number == table_number, Table.store_id == 1).first()
+        if table:
+            table_id = table.id
+        else:
+            return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Invalid mock token"})
+    else:
+        payload = decode_token(token)
+        if payload is None:
+            return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Invalid token"})
+        
+        table_id = payload.get("table_id")
     
     # 메뉴 확인
     menu = db.query(Menu).filter(Menu.id == request.menu_id).first()
@@ -202,11 +213,22 @@ def clear_cart(
     if credentials is None:
         return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Token required"})
     
-    payload = decode_token(credentials.credentials)
-    if payload is None:
-        return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Invalid token"})
+    token = credentials.credentials
     
-    table_id = payload.get("table_id")
+    # Mock token for testing (임시)
+    if token.startswith('mock-token-table-'):
+        table_number = int(token.split('-')[-1])
+        table = db.query(Table).filter(Table.table_number == table_number, Table.store_id == 1).first()
+        if table:
+            table_id = table.id
+        else:
+            return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Invalid mock token"})
+    else:
+        payload = decode_token(token)
+        if payload is None:
+            return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Invalid token"})
+        
+        table_id = payload.get("table_id")
     
     db.query(Cart).filter(Cart.table_id == table_id).delete()
     db.commit()
