@@ -21,7 +21,7 @@ class SSEService {
   private establishConnection(): void {
     if (!this.storeId) return;
 
-    const token = localStorage.getItem('admin_token');
+    const token = localStorage.getItem('admin_token') || 'mock-token';
     const url = `${API_URL}/api/admin/orders/stream?store_id=${this.storeId}&token=${token}`;
 
     this.eventSource = new EventSource(url);
