@@ -21,7 +21,7 @@ def seed_database():
             return
         
         # 1. 매장 생성
-        store = Store(name="맛있는 식당")
+        store = Store(name="맛있는 식당", id=1)
         db.add(store)
         db.commit()
         db.refresh(store)
