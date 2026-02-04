@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
+from typing import Optional
 
 from database import get_db
 from models.table import Table
@@ -41,6 +42,42 @@ def get_current_admin(
         )
     
     token = credentials.credentials
+    payload = decode_token(token)
+    
+    if payload is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail={"code": "AUTH_002", "message": "Token expired or invalid"}
+        )
+    
+    admin_id = payload.get("admin_id")
+    if admin_id is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail={"code": "AUTH_002", "message": "Invalid token payload"}
+        )
+    
+    admin = db.query(Admin).filter(Admin.id == admin_id).first()
+    if admin is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail={"code": "AUTH_001", "message": "Admin not found"}
+        )
+    
+    return admin
+
+
+def get_current_admin_from_query(
+    token: Optional[str] = None,
+    db: Session = Depends(get_db)
+) -> Admin:
+    """쿼리 파라미터에서 관리자 인증 (SSE용)"""
+    if not token:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail={"code": "AUTH_002", "message": "Token required"}
+        )
+    
     payload = decode_token(token)
     
     if payload is None:

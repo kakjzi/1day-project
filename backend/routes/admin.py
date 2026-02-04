@@ -14,7 +14,7 @@ from schemas.menu import (
     CategoryCreate, CategoryUpdate, CategoryResponse,
     OptionGroupCreate, OptionGroupResponse
 )
-from routes.auth import get_current_admin
+from routes.auth import get_current_admin, get_current_admin_from_query
 
 router = APIRouter()
 
@@ -644,7 +644,8 @@ async def order_event_generator(store_id: int, queue: asyncio.Queue):
 @router.get("/orders/stream")
 async def order_stream(
     store_id: int,
-    admin: Admin = Depends(get_current_admin)
+    token: str,
+    admin: Admin = Depends(get_current_admin_from_query)
 ):
     """실시간 주문 스트림 (SSE)"""
     queue = event_manager.subscribe(store_id)
