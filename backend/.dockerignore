@@ -1,0 +1,23 @@
+# 테스트 파일 제외
+tests/
+__pycache__/
+*.pyc
+*.pyo
+
+# 환경 파일
+.env
+.env.local
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# 기타
+*.md
+.pytest_cache/
+.coverage
+htmlcov/
