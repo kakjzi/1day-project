@@ -28,11 +28,18 @@
 - [x] Units Generation - COMPLETED (2026-02-04T13:48:51+09:00)
 
 ### CONSTRUCTION PHASE
+
+#### Backend Unit
 - [x] Functional Design - COMPLETED (2026-02-04T14:05:51+09:00)
+
+#### Admin Frontend Unit
+- [x] Functional Design - COMPLETED (2026-02-04)
+- [x] Code Generation - COMPLETED (2026-02-04)
+
+#### Common
 - [ ] NFR Requirements - SKIP
 - [ ] NFR Design - SKIP
 - [ ] Infrastructure Design - SKIP
-- [ ] Code Generation - EXECUTE
 - [ ] Build and Test - EXECUTE
 
 ### OPERATIONS PHASE
