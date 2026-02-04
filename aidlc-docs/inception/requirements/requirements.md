@@ -192,7 +192,7 @@ PENDING(대기중) → ACCEPTED(접수) → PREPARING(준비중) → COMPLETED(�
 
 - `POST /api/admin/login` - 관리자 로그인
 - `POST /api/admin/register` - 관리자 등록
-- `GET /api/admin/orders/stream` - SSE 주문 스트림
+- `GET /api/admin/orders/stream?store_id={id}&token={jwt}` - SSE 주문 스트림 (쿼리 파라미터 인증)
 - `PATCH /api/admin/orders/{id}/status` - 주문 상태 변경
 - `DELETE /api/admin/orders/{id}` - 주문 삭제
 - `POST /api/admin/tables/{id}/complete` - 테이블 이용 완료

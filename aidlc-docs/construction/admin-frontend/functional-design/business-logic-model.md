@@ -58,7 +58,8 @@
 
 ```
 1. 대시보드 마운트 시:
-   - SSE 연결 시작: GET /api/admin/orders/stream
+   - SSE 연결 시작: GET /api/admin/orders/stream?store_id={id}&token={jwt}
+   - 쿼리 파라미터로 인증 (EventSource API는 커스텀 헤더 미지원)
    - 연결 상태 표시
 
 2. 이벤트 수신 시:

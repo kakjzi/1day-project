@@ -39,9 +39,11 @@
 |--------|----------|-------------|---------|----------|
 | POST | `/api/orders` | 주문 생성 | `OrderCreate` | `Order` |
 | GET | `/api/orders` | 현재 세션 주문 목록 | `?table_id` | `[Order]` |
-| GET | `/api/admin/orders/stream` | SSE 주문 스트림 | - | `SSE Events` |
+| GET | `/api/admin/orders/stream` | SSE 주문 스트림 | `?store_id=1&token={jwt_token}` | `SSE Events` |
 | PATCH | `/api/admin/orders/{id}/status` | 주문 상태 변경 | `{status}` | `Order` |
 | DELETE | `/api/admin/orders/{id}` | 주문 삭제 | - | `{success}` |
+
+**Note**: SSE 엔드포인트는 쿼리 파라미터로 토큰을 전달합니다 (EventSource API는 커스텀 헤더를 지원하지 않음)
 
 ### 1.5 Table Routes (`routes/table.py`)
 
