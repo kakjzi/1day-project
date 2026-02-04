@@ -33,16 +33,17 @@ export default function TablesPage() {
 
   const storeId = admin?.store_id || 1;
 
+  // 인증 체크 - 임시 비활성화
   useEffect(() => {
-    if (!authLoading && !isAuthenticated) {
-      router.push('/login');
-    }
+    // if (!authLoading && !isAuthenticated) {
+    //   router.push('/login');
+    // }
   }, [authLoading, isAuthenticated, router]);
 
   useEffect(() => {
-    if (isAuthenticated && admin) {
+    // if (isAuthenticated && admin) {
       loadTables();
-    }
+    // }
   }, [isAuthenticated, admin]);
 
   const loadTables = async () => {
@@ -60,9 +61,10 @@ export default function TablesPage() {
     return <LoadingSpinner fullScreen message="로딩 중..." />;
   }
 
-  if (!isAuthenticated) {
-    return null;
-  }
+  // 인증 체크 - 임시 비활성화
+  // if (!isAuthenticated) {
+  //   return null;
+  // }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
