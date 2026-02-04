@@ -14,12 +14,23 @@ services:
     networks:
       - app-network
 
-  frontend:
+  customer-frontend:
     build: ./customer-frontend
     ports:
       - "3000:3000"
     environment:
       - NEXT_PUBLIC_USE_MOCK=false
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  admin-frontend:
+    build: ./admin-frontend
+    ports:
+      - "3001:3001"
+    environment:
       - NEXT_PUBLIC_API_URL=http://backend:8000
     depends_on:
       - backend
