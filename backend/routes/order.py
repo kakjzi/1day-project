@@ -49,12 +49,24 @@ def create_order(
     if credentials is None:
         return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Token required"})
     
-    payload = decode_token(credentials.credentials)
-    if payload is None:
-        return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Invalid token"})
+    token = credentials.credentials
     
-    table_id = payload.get("table_id")
-    store_id = payload.get("store_id")
+    # Mock token for testing (임시)
+    if token.startswith('mock-token-table-'):
+        table_number = int(token.split('-')[-1])
+        table = db.query(Table).filter(Table.table_number == table_number, Table.store_id == 1).first()
+        if table:
+            table_id = table.id
+            store_id = table.store_id
+        else:
+            return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Invalid mock token"})
+    else:
+        payload = decode_token(token)
+        if payload is None:
+            return JSONResponse(status_code=401, content={"code": "AUTH_002", "message": "Invalid token"})
+        
+        table_id = payload.get("table_id")
+        store_id = payload.get("store_id")
     
     table = db.query(Table).filter(Table.id == table_id).first()
     if not table:

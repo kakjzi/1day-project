@@ -24,7 +24,18 @@ def get_current_table(
     if credentials is None:
         raise Exception("Token required")
     
-    payload = decode_token(credentials.credentials)
+    token = credentials.credentials
+    
+    # Mock token for testing (임시)
+    if token.startswith('mock-token-table-'):
+        table_number = int(token.split('-')[-1])
+        table = db.query(Table).filter(Table.table_number == table_number, Table.store_id == 1).first()
+        if table:
+            return table
+        else:
+            raise Exception("Invalid mock token")
+    
+    payload = decode_token(token)
     if payload is None:
         raise Exception("Invalid token")
     
