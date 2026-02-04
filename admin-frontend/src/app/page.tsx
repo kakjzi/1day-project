@@ -97,10 +97,10 @@ export default function DashboardPage() {
 
     // SSE 이벤트 핸들러
     sseService.onNewOrder((order) => {
-      // 알림음 재생
-      if (audioRef.current) {
-        audioRef.current.play().catch(() => {});
-      }
+      // 알림음 재생 - 임시 비활성화 (파일 없음)
+      // if (audioRef.current) {
+      //   audioRef.current.play().catch(() => {});
+      // }
 
       // 하이라이트 효과
       setHighlightedTableId(order.table_id);
@@ -159,8 +159,8 @@ export default function DashboardPage() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      {/* 알림음 */}
-      <audio ref={audioRef} src="/notification.mp3" preload="auto" />
+      {/* 알림음 - 임시 비활성화 */}
+      {/* <audio ref={audioRef} src="/notification.mp3" preload="auto" /> */}
 
       {/* 앱바 */}
       <AppBar position="static">
