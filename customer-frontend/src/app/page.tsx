@@ -25,19 +25,22 @@ export default function MenuPage() {
   const [selectedMenuId, setSelectedMenuId] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // 인증 체크 - 임시 비활성화
   useEffect(() => {
-    if (!authLoading && !isAuthenticated) router.push('/login');
+    // if (!authLoading && !isAuthenticated) router.push('/login');
   }, [authLoading, isAuthenticated, router]);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      getMenus().then(data => {
+    // if (isAuthenticated) {
+      getMenus(1).then(data => {
         setMenus(data);
         const cats = Array.from(new Map(data.map(m => [m.category_id, { id: m.category_id, name: m.category_name }])).values());
         setCategories(cats);
         if (cats.length > 0) setSelectedCategory(cats[0].id);
+      }).catch(err => {
+        console.error('메뉴 로드 실패:', err);
       }).finally(() => setLoading(false));
-    }
+    // }
   }, [isAuthenticated]);
 
   if (authLoading || loading) return <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}><CircularProgress /></Box>;

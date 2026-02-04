@@ -25,7 +25,7 @@ export const login = (tableNumber: number, pin: string) =>
   });
 
 // Menu
-export const getMenus = () => request<import('@/types').Menu[]>('/api/menus');
+export const getMenus = (storeId: number = 1) => request<import('@/types').Menu[]>(`/api/menus?store_id=${storeId}`);
 export const getMenu = (id: number) => request<import('@/types').MenuDetail>(`/api/menus/${id}`);
 
 // Cart
