@@ -24,33 +24,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
     const storedTable = localStorage.getItem('tableNumber');
-    const storedPin = localStorage.getItem('pin');
 
     if (storedToken && storedTable) {
       setToken(storedToken);
       setTableNumber(Number(storedTable));
-    } else if (storedTable && storedPin) {
-      apiLogin(Number(storedTable), storedPin)
-        .then(res => {
-          setToken(res.access_token);
-          setTableNumber(Number(storedTable));
-          localStorage.setItem('token', res.access_token);
-        })
-        .catch(() => {
-          localStorage.removeItem('tableNumber');
-          localStorage.removeItem('pin');
-        });
     }
     setLoading(false);
   }, []);
 
   const login = async (table: number, pin: string) => {
-    const res = await apiLogin(table, pin);
-    setToken(res.access_token);
-    setTableNumber(table);
-    localStorage.setItem('token', res.access_token);
-    localStorage.setItem('tableNumber', String(table));
-    localStorage.setItem('pin', pin);
+    // Mock login for development (tables 1-10, PIN 1234)
+    if (process.env.NEXT_PUBLIC_USE_MOCK === 'true') {
+      if (table >= 1 && table <= 10 && pin === '1234') {
+        const mockToken = `mock-token-table-${table}`;
+        setToken(mockToken);
+        setTableNumber(table);
+        localStorage.setItem('token', mockToken);
+        localStorage.setItem('tableNumber', String(table));
+        localStorage.setItem('pin', pin);
+      } else {
+        throw new Error('Invalid credentials');
+      }
+    } else {
+      // Real API call
+      const res = await apiLogin(table, pin);
+      setToken(res.access_token);
+      setTableNumber(table);
+      localStorage.setItem('token', res.access_token);
+      localStorage.setItem('tableNumber', String(table));
+      localStorage.setItem('pin', pin);
+    }
   };
 
   const logout = () => {
